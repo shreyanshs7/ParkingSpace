@@ -33,7 +33,7 @@ def get_booking_spaces_by_time(from_time, to_time):
     return booking_spaces
 
 def create_vehicle(quantity, price, type, user_id):
-    vehicle = Vehicle(type=type, charge=price, quantity=quantity, user_id=user_id, status="IN_PROGRESS")
+    vehicle = Vehicle(type=type, charge=price, quantity=quantity, user_id=user_id, status="FREE")
     db.session.add(vehicle)
     db.session.commit()
     db.session.refresh(vehicle)

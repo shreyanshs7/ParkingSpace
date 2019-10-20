@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e970782-a72d-4cda-9338-b8c84bc51353" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking_space_module/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/booking_space_module/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking_space_module/state_machine.py" beforeDir="false" afterPath="$PROJECT_DIR$/booking_space_module/state_machine.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +68,7 @@
       <workItem from="1571492184788" duration="8495000" />
       <workItem from="1571504480768" duration="20364000" />
       <workItem from="1571543836149" duration="2886000" />
-      <workItem from="1571547178264" duration="20417000" />
+      <workItem from="1571547178264" duration="21542000" />
     </task>
     <servers />
   </component>

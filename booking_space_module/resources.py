@@ -31,6 +31,8 @@ def booking_spaces():
     four_booking_spaces = booking_space_sa.get_booking_spaces_in_range((latitude, longitude), four_vehicle, from_time,
                                                                       to_time, four_quantity)
     booking_spaces_list = []
+    print(two_booking_spaces)
+    print(four_booking_spaces)
     for obj in (two_booking_spaces + four_booking_spaces):
         obj.__dict__.pop('_sa_instance_state')
         if "image" in obj.__dict__:
@@ -141,49 +143,11 @@ def booking_request():
 def cancel_booking():
     booking_space_id = request.get_json()['booking_space_id']
     booking_space = booking_space_sa.cancel_booking(booking_space_id)
-    booking_spaces_list = []
-    for obj in booking_space:
-        obj.__dict__.pop('_sa_instance_state')
-        if "image" in obj.__dict__:
-            obj.__dict__['image'] = (BytesIO(obj.__dict__['image']).__str__())
-        if "location_id" in obj.__dict__:
-            location = booking_space_sa.get_location_by_id(obj.__dict__['location_id'])
-            obj.__dict__['location'] = {
-                'id': location.id,
-                'latitude': location.latitude,
-                'longitude': location.longitude
-            }
-            obj.__dict__.pop('location_id')
-        if "vehicle_id" in obj.__dict__:
-            vehicle = booking_space_sa.get_vehicle_by_id(obj.__dict__['vehicle_id'])
-            vehicle.__dict__.pop('_sa_instance_state')
-            obj.__dict__['vehicle'] = vehicle.__dict__
-            obj.__dict__.pop('vehicle_id')
-        booking_spaces_list.append(obj.__dict__)
-    return make_response(jsonify(data=booking_spaces_list), 200)
+    return make_response(jsonify(success=True), 200)
 
 @booking_space_resource.route('/confirm', methods=['POST'])
 def booking_confirm():
     data = request.get_json()
     booking_space_id = data['booking_space_id']
     booking_space = booking_space_sa.confirm_booking(booking_space_id)
-    booking_spaces_list = []
-    for obj in booking_space:
-        obj.__dict__.pop('_sa_instance_state')
-        if "image" in obj.__dict__:
-            obj.__dict__['image'] = (BytesIO(obj.__dict__['image']).__str__())
-        if "location_id" in obj.__dict__:
-            location = booking_space_sa.get_location_by_id(obj.__dict__['location_id'])
-            obj.__dict__['location'] = {
-                'id': location.id,
-                'latitude': location.latitude,
-                'longitude': location.longitude
-            }
-            obj.__dict__.pop('location_id')
-        if "vehicle_id" in obj.__dict__:
-            vehicle = booking_space_sa.get_vehicle_by_id(obj.__dict__['vehicle_id'])
-            vehicle.__dict__.pop('_sa_instance_state')
-            obj.__dict__['vehicle'] = vehicle.__dict__
-            obj.__dict__.pop('vehicle_id')
-        booking_spaces_list.append(obj.__dict__)
-    return make_response(jsonify(data=booking_spaces_list), 200)
+    return make_response(jsonify(success=True), 200)
