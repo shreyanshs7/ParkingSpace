@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: parking-space
+  labels:
+    app: parking-space
+spec:
+  type: NodePort
+  ports:
+  - port: 9000
+    targetPort: 9000
+    protocol: TCP
+  selector:
+    app: parking-space

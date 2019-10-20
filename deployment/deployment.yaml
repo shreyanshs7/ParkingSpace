@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: parking-space
+  labels:
+    app: parking-space
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: parking-space
+  template:
+    metadata:
+      labels:
+        app: parking-space
+    spec:
+      containers:
+      - name: parking-space
+        image: parking-space:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9000

@@ -1,0 +1,1 @@
+from .resources import booking_space_resource
