@@ -60,6 +60,7 @@ def create():
     print(request.form)
     print(request.files)
     name = data['name']
+    user_id = data['user_id']
     from_time = data['from_time']
     to_time = data['to_time']
     latitude = data['latitude']
@@ -75,13 +76,13 @@ def create():
     if "two" in vehicle:
         quantity = vehicle['two']['quantity']
         price = vehicle['two']['charge']
-        two_vehicle = booking_space_sa.create_vehicle(quantity, price, 'TWO', 1)
-        booking_space = booking_space_sa.create(name, location.id, from_time, to_time, image, 1, two_vehicle.id)
+        two_vehicle = booking_space_sa.create_vehicle(quantity, price, 'TWO', user_id)
+        booking_space = booking_space_sa.create(name, location.id, from_time, to_time, image, user_id, two_vehicle.id)
     if "four" in vehicle:
         quantity = vehicle['four']['quantity']
         price = vehicle['four']['charge']
-        four_vehicle = booking_space_sa.create_vehicle(quantity, price, 'FOUR', 1)
-        booking_space = booking_space_sa.create(name, location.id, from_time, to_time, image, 1, four_vehicle.id)
+        four_vehicle = booking_space_sa.create_vehicle(quantity, price, 'FOUR', user_id)
+        booking_space = booking_space_sa.create(name, location.id, from_time, to_time, image, user_id, four_vehicle.id)
     return make_response(jsonify(success = True), 200)
 
 @booking_space_resource.route('/history', methods=['GET'])
