@@ -31,8 +31,6 @@ def booking_spaces():
     four_booking_spaces = booking_space_sa.get_booking_spaces_in_range((latitude, longitude), four_vehicle, from_time,
                                                                       to_time, four_quantity)
     booking_spaces_list = []
-    print(two_booking_spaces)
-    print(four_booking_spaces)
     for obj in (two_booking_spaces + four_booking_spaces):
         obj.__dict__.pop('_sa_instance_state')
         if "image" in obj.__dict__:
@@ -59,8 +57,6 @@ def create():
     # print(data)
     # print(data['vehicle'])
     data = json.loads(request.form['data'])
-    print(request.form)
-    print(request.files)
     name = data['name']
     user_id = data['user_id']
     from_time = data['from_time']
@@ -69,7 +65,6 @@ def create():
     longitude = data['longitude']
     image = request.files['picture']
     image = image.read()
-    print(image)
     vehicle = data['vehicle']
     # if image and allowed_file(image):
     #     filename = secure_filename(image.filename)
@@ -115,7 +110,6 @@ def bookings_done():
 
 @booking_space_resource.route('/request', methods=['POST'])
 def booking_request():
-    print(request.get_json())
     user_id = request.get_json()['user_id']
     booking_request = booking_space_sa.booking_requests(user_id)
     booking_spaces_list = []
