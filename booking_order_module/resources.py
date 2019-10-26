@@ -8,6 +8,7 @@ booking_order_resource = Blueprint('booking_order_resource', __name__)
 @booking_order_resource.route('/create', methods=['POST'])
 def create():
     data = request.get_json()
+    print(data)
     booking_space_id = data['booking_space_id']
     booked_by = data['user_id']
     from_time = data['from_time']
